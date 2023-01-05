@@ -75,14 +75,16 @@ namespace CRUDsimples.Models
             }
         }
 
-        public static void Excluir(int id)
+        public static bool Excluir(int id)
         {
             Usuario usuario = Usuario.listagem.Find(user => user.Id == id);
 
             if (usuario != null)
             {
-                Usuario.listagem.Remove(usuario);
+                return Usuario.listagem.Remove(usuario);
             }
+
+            return false;
         }
     }
 }
