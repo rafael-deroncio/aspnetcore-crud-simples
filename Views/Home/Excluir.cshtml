@@ -1,0 +1,14 @@
+@model Usuario
+
+<div class="container">
+    <h1 class="text-primary">CRUD - Excluir</h1>
+    <hr>
+    <h4>Deseja realmente exluir o usuário <span class="text-danger">@Model.NomeCompleto?</span></h4>
+    <form method="post" class="w-25">
+        <input type="hidden" asp-for="Id">
+        <div class="mt-3">
+            <a asp-action="Usuarios" class="btn btn-success">Não</a>
+            <button class="btn btn-danger" type="submit">Sim</button>
+        </div>
+    </form>
+</div>

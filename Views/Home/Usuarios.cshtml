@@ -1,0 +1,55 @@
+@model IQueryable<Usuario>
+
+<h1 class="text-primary">CRUD - Usuarios</h1>
+<hr>
+<a href="/Home/Cadastrar" class="btn btn-primary">Novo Usuário</a>
+
+@if (TempData.ContainsKey("Excluiu"))
+{
+    var excluiu = (bool)TempData["Excluiu"];
+    if (excluiu)
+    {
+        <partial name="_MensagemSuccess" model="@("Usuário excluído com sucesso!")"></partial>
+    }
+    else
+    {
+        <partial name="_MensagemWarning" model="@("Erro ao excluir usuário!")"></partial>
+    }
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome Completo</th>
+            <th>E-mail</th>
+            <th>Profissão</th>
+            <th>Data de Cadastro</th>
+            <th style="text-align:center">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Id</td>
+                <td>@usuario.NomeCompleto</td>
+                <td>@usuario.Email.ToLower()</td>
+                <td>@usuario.Profissao</td>
+                <td>@usuario.DataCadastro</td>
+                <td>
+                    <a asp-action="Cadastrar" asp-route-id="@usuario.Id" class="btn btn-sm btn-secondary">
+                        Alterar
+                    </a>
+                    <a asp-action="Excluir" asp-route-id="@usuario.Id" class="btn btn-sm btn-danger">
+                        Excluir
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+<script src="/lib/bootstrap5/dist/js/bootstrap.js"></script>
+}

@@ -1,0 +1,29 @@
+@model Usuario
+
+<div class="container">
+    <h1 class="text-primary">CRUD - Cadastro</h1>
+    <hr>
+    <form method="POST" class="w-25" id="form-id">
+        <input type="hidden" asp-for=Id>
+        <div class="form-group">
+            <label asp-for="Nome">Nome: </label>
+            <input asp-for="Nome" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Sobrenome">Sobrenome: </label>
+            <input asp-for="Sobrenome" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">E-mail: </label>
+            <input asp-for="Email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Profissao">Profissão: </label>
+            <input asp-for="Profissao" class="form-control">
+        </div>
+        <div class="mt-3">
+            <a href="/Home/Usuarios" class="btn btn-light">Cancelar</a>
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+    </form>
+</div>
